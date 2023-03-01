@@ -12,10 +12,10 @@ namespace harmadikfeladat
     internal class Orszagut
     {
         private List<Jarmu> lista;
-        public Orszagut(string fajlnev)
+        public Orszagut(string fajl)
         {
             this.lista = lista;
-            Beolvas(fajlnev);
+            Beolvas("forras.txt");
         }
         public void Beolvas(string fajlnev)
         {
