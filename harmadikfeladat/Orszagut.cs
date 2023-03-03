@@ -11,11 +11,12 @@ namespace harmadikfeladat
 {
     internal class Orszagut
     {
-        private List<Jarmu> lista;
+        private List<Jarmu> lista = new List<Jarmu>();
         public Orszagut(string fajl)
         {
             this.lista = lista;
             Beolvas("forras.txt");
+            KiketMertunkBe();
         }
         public void Beolvas(string fajlnev)
         {
@@ -32,6 +33,10 @@ namespace harmadikfeladat
                     lista.Add(new AudiS8(Convert.ToInt32(line[2]), line[1], Convert.ToBoolean(line[3])));
                 }
             }
+            foreach(var item in lista) 
+            {
+                Console.WriteLine(item);
+            }
             sr.Close();
         }
 
@@ -43,14 +48,15 @@ namespace harmadikfeladat
             {
                 if (item is Robogo && (item as Robogo).Haladhatitt(90) == false)
                 {
-                    sw.WriteLine($"{item} ---- {(item as Robogo).Haladhatitt(90)}");
+                    sw.WriteLine($"{item} ---- {(item as Robogo)} Haladhat");
                 }
                 else if(item is AudiS8 && (item as AudiS8).GyorshajtottE(90) == false)
                 {
                     sw.WriteLine($"{item} ---- {(item as AudiS8).GyorshajtottE(90)}");
                 }
-            sw.Close(); 
+            
             }
+            sw.Close(); 
         }
     }
 }
